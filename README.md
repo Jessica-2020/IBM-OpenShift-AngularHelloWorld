@@ -1,7 +1,7 @@
 # Guía de despliegue de un HelloWorld con Appsody y OpenShift
-
-En esta guía encontrará la creación y el despliegue de una aplicación de manera nativa haciendo uso de Appsody y un cluster de OpenShift, el cual se encuentra alojado en IBM Cloud.
 ---
+En esta guía encontrará la creación y el despliegue de una aplicación de manera nativa haciendo uso de Appsody y un cluster de OpenShift, el cual se encuentra alojado en IBM Cloud.
+
 ## Prerequisitos
 
 - Instalar Docker.

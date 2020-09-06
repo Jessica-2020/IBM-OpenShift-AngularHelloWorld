@@ -1,11 +1,11 @@
 # Guía de despliegue de un HelloWorld con Appsody y OpenShift
 
-En esta guía encontrará la creación y el despliegue de una aplicación de manera nativa haciendo uso de Appsody y un cluster de OpenShift el cual se encuentra alojado en IBM Cloud.
+En esta guía encontrará la creación y el despliegue de una aplicación de manera nativa haciendo uso de Appsody y un cluster de OpenShift, el cual se encuentra alojado en IBM Cloud.
 
 ## Prerequisitos
 
-- Instalar la CLI de Appsody.
 - Instalar Docker.
+- Instalar la CLI de Appsody.
 - Instalar la CLI de OpenShift.
 - Instalar la CLI de IBM Cloud.
 
@@ -31,7 +31,7 @@ default    registry-console    registry-console-default.cp4apps-workshop-prop-52
 ```
 A continuación, se acceder al registro interno, para esto mediante el siguiente comando se crea la ruta y se expone.
 ```
-oc create route reencrypt docker-registry --service=docker-registry -n default
+oc create route reencrypt docker-registry --service=docker-registry -n default port 3079
 ```
 Una vez esto, ya se puede obtener la URL del registro de Docker.
 ```
@@ -56,12 +56,12 @@ oc whoami -t| docker login -u $(oc whoami) --password-stdin $IMAGE_REGISTRY
 ## Creación proyecto de Appsody
 En esta sección vamos a crear un nuevo directorio para el proyecto y a su vez ejecutarlo. 
 
-Creamos un nuevo directorio para el proyecto y elija una pila de desarrollo. Para ver todas las pilas disponibles, ejecute:
+Creamos un nuevo directorio para el proyecto y elegimos una pila de desarrollo. Para ver todas las pilas disponibles, se ejecuta el segundo comando a continuación:
 ```
 mkdir appsody
 appsody list
 ```
-Ejecútelo *appsody init <stack>* para descargar la plantilla del proyecto. Para este caso usamos *nodejs-express* para crear un proyecto Appsody completamente funcional:
+Al ejecutar *appsody init <stack>* se descarga la plantilla del proyecto. En este caso usamos *nodejs-express* para crear un proyecto Appsody completamente funcional:
 ```
 appsody init nodejs-express
 ```

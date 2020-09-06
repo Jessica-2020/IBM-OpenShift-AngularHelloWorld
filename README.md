@@ -1,15 +1,16 @@
 # Guía de despliegue de un HelloWorld con Appsody y OpenShift
 
 En esta guía encontrará la creación y el despliegue de una aplicación de manera nativa haciendo uso de Appsody y un cluster de OpenShift, el cual se encuentra alojado en IBM Cloud.
-
+---
 ## Prerequisitos
 
 - Instalar Docker.
 - Instalar la CLI de Appsody.
-- Instalar la CLI de OpenShift.
 - Instalar la CLI de IBM Cloud.
+- Instalar la CLI de OpenShift.
 
-## Creación del Proyecto
+
+## 1. Creación del Proyecto
 
 En esta sección encontrará los comandos necesarios para la implementación de OpenShift en un proyecto. El primer paso de esta guía es crear un nuevo proyecto, para esto, ejecute el siguiente comando desde una terminal:
 
@@ -53,7 +54,7 @@ Ahora, lo que haremos es guardar las credenciales de Docker para que la conexió
 oc whoami -t| docker login -u $(oc whoami) --password-stdin $IMAGE_REGISTRY
 ```
 
-## Creación proyecto de Appsody
+## 2. Creación proyecto de Appsody
 En esta sección vamos a crear un nuevo directorio para el proyecto y a su vez ejecutarlo. 
 
 Creamos un nuevo directorio para el proyecto y elegimos una pila de desarrollo. Para ver todas las pilas disponibles, se ejecuta el segundo comando a continuación:
@@ -69,3 +70,10 @@ Finalmente, mediante el siguiente comando iniciamos el contenedor de desarrollo.
 ```
 appsody run
 ```
+---
+### Referencias de Instalación.
+1. <a href="https://docs.docker.com/get-docker/"> Docker Installation.
+2. <a href="https://appsody.dev/docs/installing/installing-appsody"> CLI de Appsody.
+3. <a href="https://cloud.ibm.com/docs/cli"> CLI de IBM Cloud.
+4. <a href="https://cloud.ibm.com/docs/openshift?topic=openshift-openshift-cli&locale=es"> CLI de OpenShift.
+

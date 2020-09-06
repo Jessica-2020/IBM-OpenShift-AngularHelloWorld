@@ -9,7 +9,7 @@ En esta guía encontrará la creación y el despliegue de una aplicación de man
 - Instalar la CLI de OpenShift.
 - Instalar la CLI de IBM Cloud.
 
-## 1. Creación del Proyecto
+## Creación del Proyecto
 
 En esta sección encontrará los comandos necesarios para la implementación de OpenShift en un proyecto. El primer paso de esta guía es crear un nuevo proyecto, para esto, ejecute el siguiente comando desde una terminal:
 
@@ -44,8 +44,28 @@ oc get route --all-namespaces | grep registry
  default    docker-registry    docker-registry-default.cp4apps-workshop-prop-5290c8c8e5797924dc1ad5d1b85b37c0-0001.us-    east.containers.appdomain.cloud
  default    registry-console    registry-console-default.cp4apps-workshop-prop-5290c8c8e5797924dc1ad5d1b85b37c0-0001.us-    east.containers.appdomain.cloud
  ```
- La URL que vamos a utilizar es la docker-registry. Se verá así docker-registry-default.*.containers.appdomain.cloud.* Y la configuramos de la siguiente manera:
+ La URL que vamos a utilizar es la correspondiente al docker-registry. La vamos a configurar de la siguiente manera:
  ```
  export IMAGE_REGISTRY=docker-registry-default.openshift-43-ea9753cca330b7f05a99ad5b2c8b5da1-0000.us-east.containers.appdomain.cloud
  ```
+Ahora, lo que haremos es guardar las credenciales de Docker para que la conexión sea directa, se logre subir la imagén a Docker Hub y desplegarlo de manera correcta en OpenShift.
+```
+oc whoami -t| docker login -u $(oc whoami) --password-stdin $IMAGE_REGISTRY
+```
 
+## Creación proyecto de Appsody
+En esta sección vamos a crear un nuevo directorio para el proyecto y a su vez ejecutarlo. 
+
+Creamos un nuevo directorio para el proyecto y elija una pila de desarrollo. Para ver todas las pilas disponibles, ejecute:
+```
+mkdir appsody
+appsody list
+```
+Ejecútelo *appsody init <stack>* para descargar la plantilla del proyecto. Para este caso usamos *nodejs-express* para crear un proyecto Appsody completamente funcional:
+```
+appsody init nodejs-express
+```
+Finalmente, mediante el siguiente comando iniciamos el contenedor de desarrollo.
+```
+appsody run
+```

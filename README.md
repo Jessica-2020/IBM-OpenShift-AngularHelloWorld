@@ -63,14 +63,83 @@ mkdir appsody
 appsody list
 ```
 Al ejecutar *appsody init <stack>* se descarga la plantilla del proyecto. En este caso usamos *nodejs-express* para crear un proyecto Appsody completamente funcional:
+ 
 ```
 appsody init nodejs-express
 ```
 Finalmente, mediante el siguiente comando iniciamos el contenedor de desarrollo.
+ 
 ```
 appsody run
 ```
 ---
+ 
+## 3. Despligue de la Aplicacion a Openshift con Appsody
+
+Para realizar el despliegue sobre el cluster de OpenShift es necesario correr el siguiente comando:
+ 
+```
+appsody deploy --tag <UserDocker>/<App-Name>:latest --push --namespace <Project-Name>
+```
+ejemplo:
+```
+appsody deploy --tag smith2008/demoappsody:latest --push --namespace ap3
+```
+## 4. Verificar el Despligue de la Aplicacion en el cluster de Openshift 
+
+
+_Para verificar el despliegue siga los siguintes pasos:_
+
+
+_1. Ingrese a IBM cloud desde el siguiente link:_
+```
+https://cloud.ibm.com/login
+```
+_2. Realice el login con sus credenciales de ingreso._
+
+---
+![Captura de pantalla de 2020-03-26 17-25-55](https://user-images.githubusercontent.com/60987042/77702638-f8482580-6f86-11ea-9a83-9714df69ec38.png)
+---
+
+_3. Dirijase al resource list._
+---
+<img width="696" alt="7" src="https://user-images.githubusercontent.com/60987042/76996077-da434b00-691e-11ea-92be-558da48f7d97.PNG">
+---
+
+
+_4. Dirigirse a la sección de clusters._
+
+---
+<p align="center">
+<img width="668" alt="clus" src="https://user-images.githubusercontent.com/60987042/83417688-13506f00-a3e8-11ea-8d06-69558164a8a0.PNG">
+</p>
+
+_5. Ingresar al cluster que lleva por nombre openshift-4.3_
+
+_6. Ingrese a la sección de openshift web console._
+
+<p align="center">
+<img width="949" alt="4 3" src="https://user-images.githubusercontent.com/60987042/83417830-40048680-a3e8-11ea-968b-2cda9035accf.PNG">
+</p>
+
+_7. En la parte superior busque el proyecto en cual se realizó el despligue, e ingrese a el._
+
+<p align="center">
+<img width="960" alt="ap3" src="https://user-images.githubusercontent.com/60987042/92391019-923cfe00-f0e1-11ea-96ca-c0a5bd5f652e.PNG">
+</p>
+
+_8. vaya a la sección de la url en la parte superor del circulo que simboliza el pod corriendo y de clic._
+
+<p align="center">
+<img width="960" alt="url-ap3" src="https://user-images.githubusercontent.com/60987042/92391029-9537ee80-f0e1-11ea-8c28-b11e3faec377.PNG">
+</p>
+
+_9. En el navegador se va a abrir una nueva pestaña con la app corriendo._
+
+<p align="center">
+<img width="960" alt="apps" src="https://user-images.githubusercontent.com/60987042/92391035-979a4880-f0e1-11ea-87a2-327701723218.PNG">
+</p>
+
 ### Referencias de Instalación.
 1. <a href="https://docs.docker.com/get-docker/"> Docker Installation.
 2. <a href="https://appsody.dev/docs/installing/installing-appsody"> CLI de Appsody.
